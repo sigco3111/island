@@ -5,7 +5,10 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 // This is required for Vite to work correctly with CodeSandbox
-const server = process.env.APP_ENV === "sandbox" ? { hmr: { clientPort: 443 } } : {};
+const server =
+  process.env.APP_ENV === "sandbox"
+    ? { hmr: { clientPort: 443 } }
+    : { port: 5177 };
 
 // https://vitejs.dev/config/
 export default defineConfig({
