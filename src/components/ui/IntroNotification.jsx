@@ -25,10 +25,10 @@ function IntroNotification({ show, onDismiss, onCreateNewIsland }) {
       </p>
       <div className='flex justify-between items-center'>
         <button onClick={onCreateNewIsland} className='btn'>
-          Create New Island
+          새 섬 만들기
         </button>
         <button onClick={onDismiss} className='btn-dotted !text-sm text-slate-600'>
-          Dismiss
+          닫기
         </button>
       </div>
     </motion.div>
