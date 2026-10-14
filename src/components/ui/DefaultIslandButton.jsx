@@ -11,7 +11,7 @@ function DefaultIslandButton({ onLoadDefaultIsland }) {
   return (
     <div className='absolute top-4 right-4 h-14 group'>
       <ToolTip position='left' offset={20}>
-        <span className='text-sm'>Load Starter Island</span>
+        <span className='text-sm'>기본 섬 불러오기</span>
       </ToolTip>
       <button onClick={onLoadDefaultIsland} className='group/btn'>
         <span className='size-14 rounded-full bg-white shadow-md flex items-center justify-center relative'>
