@@ -13,35 +13,35 @@ function HelpModal({ show, onClose }) {
   return (
     <div role='dialog' aria-modal='true' className='fixed inset-0 bg-ocean/50 backdrop-blur-md flex justify-center items-center z-50'>
       <div className='bg-white rounded-lg shadow max-w-2xl w-full p-6'>
-        <h2 className='text-xl font-semibold mb-4'>Tips & Shortcuts</h2>
+        <h2 className='text-xl font-semibold mb-4'>도움말과 단축키</h2>
         <div className='mb-4'>
-          <h3 className='font-medium mb-4'>Keyboard Shortcuts:</h3>
+          <h3 className='font-medium mb-4'>키보드 단축키</h3>
           <ul className='list-outside list-none ml-0 space-y-1'>
             <li>
-              <KeyBindingItem keyCombination={["e"]} action='Toggle edit mode' tag='span' />
+              <KeyBindingItem keyCombination={["e"]} action='편집 모드 전환' tag='span' />
             </li>
             <li>
-              <KeyBindingItem keyCombination={["v"]} action='Move tool (Camera control)' tag='span' />
+              <KeyBindingItem keyCombination={["v"]} action='이동 도구 (카메라 조작)' tag='span' />
             </li>
             <li className='flex items-center gap-x-3'>
-              <KeyBindingItem keyCombination={["a", "s"]} action='Raise / Lower terrain mode' separator=' ' tag='span' />
+              <KeyBindingItem keyCombination={["a", "s"]} action='지형 높이기 / 낮추기' separator=' ' tag='span' />
             </li>
             <li className='pt-2 pb-3 text-sm'>
-              <strong className='text-blue-600'>Tip!</strong> In either terrain mode, hold <Kbd>Alt</Kbd> to quickly switch between modes.
+              <strong className='text-blue-600'>팁!</strong> 지형 편집 중 <Kbd>Alt</Kbd>를 누르면 높이기와 낮추기를 빠르게 전환합니다.
               <br />
-              Hold <Kbd>Ctrl</Kbd> to access the move tool and adjust the camera.
+              <Kbd>Ctrl</Kbd>를 누른 채 카메라를 조절하세요.
             </li>
             <li>
-              <KeyBindingItem keyCombination={["[", "]"]} action='Make brush size smaller / bigger' separator=' ' tag='span' />
+              <KeyBindingItem keyCombination={["[", "]"]} action='브러시 크기 줄이기 / 늘리기' separator=' ' tag='span' />
             </li>
             <li>
-              <KeyBindingItem keyCombination={["-", "+"]} action='Make brush strength smaller / bigger' separator=' ' tag='span' />
+              <KeyBindingItem keyCombination={["-", "+"]} action='브러시 강도 줄이기 / 늘리기' separator=' ' tag='span' />
             </li>
             <li>
-              <KeyBindingItem keyCombination={["u", "y"]} action='Undo / Redo' tag='span' />
+              <KeyBindingItem keyCombination={["u", "y"]} action='실행 취소 / 다시 실행' tag='span' />
             </li>
             <li>
-              <KeyBindingItem keyCombination={["Shift + R"]} action='Reset' tag='span' />
+              <KeyBindingItem keyCombination={["Shift + R"]} action='초기화' tag='span' />
             </li>
           </ul>
         </div>
@@ -49,7 +49,7 @@ function HelpModal({ show, onClose }) {
           onClick={onClose}
           className='cursor-pointer mt-2 px-4 py-2 bg-blue-600 text-white rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-400'
         >
-          Close
+          닫기
         </button>
       </div>
     </div>
