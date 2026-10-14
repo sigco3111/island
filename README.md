@@ -39,7 +39,7 @@ npm run dev
 npm run build
 ```
 
-Vite의 base는 `/island/`입니다. Pages는 `main`의 `/docs` 폴더를 게시합니다. `docs/index.html`은 JS·CSS·모델·기본 스냅샷·아이콘을 포함한 한국어 정적 배포본으로 별도 서버가 필요하지 않습니다. 원본 소스와 `public` 자산도 포크에 보존합니다.
+Vite의 base는 `/island/`입니다. Pages는 `main`의 `/docs` 폴더를 게시합니다. `docs/index.html`은 `9-index.html`을 여는 launcher입니다. `docs/9-index.html`은 JS·CSS·모델·기본 스냅샷·아이콘을 포함한 한국어 정적 배포본으로 별도 서버가 필요하지 않습니다. 원본 소스와 `public` 자산도 포크에 보존합니다.
 
 - `src/components/UserInterface.jsx`: 도구 구성
 - `src/components/ui`: 도움말, 안내, 제작진, 편집 메뉴
