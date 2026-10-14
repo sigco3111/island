@@ -10,10 +10,10 @@ function CreditsModal({ show, onClose }) {
   return (
     <div role='dialog' aria-modal='true' className='fixed inset-0 bg-ocean/50 backdrop-blur-md flex justify-center items-center z-50 prose'>
       <div className='bg-white rounded-lg shadow max-w-xl w-full p-6'>
-        <h2 className='text-xl font-semibold mb-4'>Credits</h2>
+        <h2 className='text-xl font-semibold mb-4'>제작진</h2>
         <div className='mb-4 space-y-2'>
           <p>
-            Model Island is work in progress by Huw Roberts. You can find more of my creations at{" "}
+            Model Island는 Huw Roberts가 개발 중인 프로젝트입니다. 다른 작품은{" "}
             <a href='https://huwroberts.net' target='_blank'>
               huwroberts.net
             </a>{" "}
@@ -24,14 +24,14 @@ function CreditsModal({ show, onClose }) {
             .
           </p>
           <p>
-            The project is open source and available on{" "}
+            이 프로젝트의 공개 소스는 다음에서 확인할 수 있습니다:{" "}
             <a href='https://github.com/wuhhh/island  ' target='_blank' rel='noopener noreferrer'>
               GitHub
             </a>
           </p>
         </div>
         <div className='mb-4'>
-          <h3 className='font-medium mb-4'>Models:</h3>
+          <h3 className='font-medium mb-4'>3D 모델 출처</h3>
           <p>
             <ul className='list-disc list-inside'>
               <li>
@@ -58,7 +58,7 @@ function CreditsModal({ show, onClose }) {
           </p>
         </div>
         <div className='mb-4'>
-          <h3 className='font-medium mb-4'>Icons:</h3>
+          <h3 className='font-medium mb-4'>아이콘 출처</h3>
           <p>
             <a href='https://lucide.dev/' target='_blank'>
               Lucide Icons
@@ -69,7 +69,7 @@ function CreditsModal({ show, onClose }) {
           onClick={onClose}
           className='cursor-pointer mt-2 px-4 py-2 bg-blue-600 text-white rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-400'
         >
-          Close
+          닫기
         </button>
       </div>
     </div>
