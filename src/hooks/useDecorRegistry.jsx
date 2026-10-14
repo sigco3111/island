@@ -151,7 +151,7 @@ const DECOR_ITEMS = [
   {
     key: "cloud",
     nodeName: "cloud",
-    label: "Cloud",
+    label: "구름",
     icon: "icon--decor-cloud.jpg",
     placementProps: {
       mustIntersect: false,
@@ -166,7 +166,7 @@ const DECOR_ITEMS = [
   {
     key: "dock",
     nodeName: "dock",
-    label: "Dock",
+    label: "부두",
     icon: "icon--decor-dock.jpg",
     placementProps: {
       yCompensation: -0.01,
@@ -176,7 +176,7 @@ const DECOR_ITEMS = [
   {
     key: "house",
     nodeName: "house",
-    label: "House",
+    label: "집",
     icon: "icon--decor-house1.jpg",
     placementProps: {
       yCompensation: -0.02,
@@ -187,7 +187,7 @@ const DECOR_ITEMS = [
   {
     key: "lighthouse",
     nodeName: "lighthouse",
-    label: "Lighthouse",
+    label: "등대",
     icon: "icon--decor-lighthouse.jpg",
     placementProps: {
       yCompensation: -0.03,
@@ -197,7 +197,7 @@ const DECOR_ITEMS = [
   {
     key: "tent",
     nodeName: "tent",
-    label: "Tent",
+    label: "텐트",
     icon: "icon--decor-tent.jpg",
     placementProps: {
       yCompensation: -0.01,
@@ -208,7 +208,7 @@ const DECOR_ITEMS = [
   {
     key: "tree",
     nodeName: "tree",
-    label: "Tree",
+    label: "나무",
     icon: "icon--decor-tree1.jpg",
     placementProps: {
       yCompensation: -0.02,
@@ -219,7 +219,7 @@ const DECOR_ITEMS = [
   {
     key: "windTurbine",
     nodeName: "windTurbine",
-    label: "Turbine",
+    label: "풍력 터빈",
     icon: "icon--decor-wind-turbine.jpg",
     placementProps: {
       yCompensation: -0.01,
