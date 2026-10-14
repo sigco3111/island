@@ -18,7 +18,7 @@ function DefaultIslandButton({ onLoadDefaultIsland }) {
           <span className='size-[50px] rounded-full overflow-hidden'>
             <img
               src='/island/images/island-preview@2x.jpg'
-              alt='Revert to Starter Island'
+              alt='기본 섬으로 되돌리기'
               className='w-full h-full object-cover transition-transform duration-500 group-hover/btn:scale-110'
             />
           </span>
