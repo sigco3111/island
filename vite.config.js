@@ -1,3 +1,4 @@
+import { viteSingleFile } from 'vite-plugin-singlefile';
 import { resolve } from "path";
 
 import tailwindcss from "@tailwindcss/vite";
@@ -19,5 +20,5 @@ export default defineConfig({
       "@src": resolve(__dirname, "./src"),
     },
   },
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), viteSingleFile()],
 });
