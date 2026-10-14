@@ -28,11 +28,11 @@ export default function DeleteButton() {
       exit={{ opacity: 0, y: 8 }}
       transition={{ type: "spring", stiffness: 500, damping: 20, bounce: 0.5 }}
     >
-      <ToolbarButton label='Delete Selected' onClick={handleClick} active={false}>
+      <ToolbarButton label='선택 항목 삭제' onClick={handleClick} active={false}>
         <Trash2 strokeWidth={1} />
       </ToolbarButton>
       <ToolTip position='right' offset={16}>
-        <KeyBindingItem keyCombination={["Backspace"]} action='Delete' tag='span' flip />
+        <KeyBindingItem keyCombination={["Backspace"]} action='삭제' tag='span' flip />
       </ToolTip>
     </motion.div>
   );
