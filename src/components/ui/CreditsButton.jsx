@@ -5,7 +5,7 @@
  */
 function CreditsButton({ onShowCredits }) {
   return (
-    <div className='absolute bottom-[26px] right-12 w-[26px] h-[26px] flex items-center'>
+    <div className='absolute bottom-[26px] right-12 w-auto h-[26px] flex items-center'>
       <button onClick={onShowCredits} className='btn-dotted text-white'>
         제작진
       </button>
