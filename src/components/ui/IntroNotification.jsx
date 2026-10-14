@@ -18,11 +18,10 @@ function IntroNotification({ show, onDismiss, onCreateNewIsland }) {
       className='fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-lg p-8 w-11/12 max-w-xl z-50 cursor-default'
     >
       <div className='text-left space-y-2 mb-3'>
-        <p className='font-medium text-base'>🏝️ Model Island - Sculpt and decorate your own paradise 🏝️</p>
+        <p className='font-medium text-base'>🏝️ Model Island - 나만의 섬을 빚고 꾸며보세요 🏝️</p>
       </div>
       <p className='text-sm text-gray-700 mb-3'>
-        Click the pencil button in the top left to try editing this one! If you're feeling brave you can create a new island from scratch by
-        clicking the button below!
+        왼쪽 위 연필 버튼을 눌러 섬을 편집해보세요! 아래 버튼으로 빈 섬부터 새로 만들 수도 있습니다.
       </p>
       <div className='flex justify-between items-center'>
         <button onClick={onCreateNewIsland} className='btn'>
