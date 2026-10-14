@@ -17,17 +17,17 @@ import MegaPlaceDecorButton from "./ui/MegaPlaceDecorButton.jsx";
 
 // Tool options for the toolbar
 const TOOL_OPTIONS = [
-  { id: "move", icon: Hand, label: "Move", shortcut: ["v"], type: "toggle" },
-  { id: "sculpt+", icon: Brush, label: "Raise Terrain", shortcut: ["a"], type: "toggle" },
-  { id: "sculpt-", icon: Eraser, label: "Lower Terrain", shortcut: ["s"], type: "toggle" },
-  { id: "size", icon: CircleDotDashed, label: "Brush Size", shortcut: ["[", "]"], type: "slider" },
-  { id: "strength", icon: CircleFadingPlus, label: "Brush Strength", shortcut: ["-", "+"], type: "slider" },
-  // { id: "decor-select", icon: WandSparkles, label: "Place Items", shortcut: ["p"], type: "decor-select" },
-  { id: "undo", icon: Undo, label: "Undo", shortcut: ["u"], type: "action" },
-  { id: "redo", icon: Redo, label: "Redo", shortcut: ["y"], type: "action" },
-  { id: "download", icon: Download, label: "Download JSON", type: "action" },
-  { id: "reset", icon: RefreshCw, label: "Reset", shortcut: ["Shift", "r"], type: "action" },
-  { id: "help", icon: HelpCircle, label: "Help", shortcut: ["h"], type: "action" },
+  { id: "move", icon: Hand, label: "이동", shortcut: ["v"], type: "toggle" },
+  { id: "sculpt+", icon: Brush, label: "지형 높이기", shortcut: ["a"], type: "toggle" },
+  { id: "sculpt-", icon: Eraser, label: "지형 낮추기", shortcut: ["s"], type: "toggle" },
+  { id: "size", icon: CircleDotDashed, label: "브러시 크기", shortcut: ["[", "]"], type: "slider" },
+  { id: "strength", icon: CircleFadingPlus, label: "브러시 강도", shortcut: ["-", "+"], type: "slider" },
+  // { id: "decor-select", icon: WandSparkles, label: "장식 배치", shortcut: ["p"], type: "decor-select" },
+  { id: "undo", icon: Undo, label: "실행 취소", shortcut: ["u"], type: "action" },
+  { id: "redo", icon: Redo, label: "다시 실행", shortcut: ["y"], type: "action" },
+  { id: "download", icon: Download, label: "JSON 내려받기", type: "action" },
+  { id: "reset", icon: RefreshCw, label: "초기화", shortcut: ["Shift", "r"], type: "action" },
+  { id: "help", icon: HelpCircle, label: "도움말", shortcut: ["h"], type: "action" },
 ];
 
 // All UI components have been moved to their own files in the ui directory
