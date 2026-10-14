@@ -14,7 +14,7 @@ import ToolTip from "./ToolTip";
 const ToolbarToggle = ({ editMode, toggleEditMode }) => (
   <button
     onClick={toggleEditMode}
-    aria-label='Toggle edit mode'
+    aria-label='편집 모드 전환'
     className='relative cursor-pointer w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-400'
   >
     <AnimatePresence mode='wait'>
@@ -30,7 +30,7 @@ const ToolbarToggle = ({ editMode, toggleEditMode }) => (
             <X strokeWidth={1} />
           </motion.div>
           <ToolTip>
-            <KeyBindingItem keyCombination={["e"]} action='Exit Edit Mode' tag='span' flip />
+            <KeyBindingItem keyCombination={["e"]} action='편집 모드 종료' tag='span' flip />
           </ToolTip>
         </div>
       ) : (
@@ -45,7 +45,7 @@ const ToolbarToggle = ({ editMode, toggleEditMode }) => (
             <Pencil strokeWidth={1} />
           </motion.div>
           <ToolTip>
-            <KeyBindingItem keyCombination={["e"]} action='Edit Mode' tag='span' flip />
+            <KeyBindingItem keyCombination={["e"]} action='편집 모드' tag='span' flip />
           </ToolTip>
         </div>
       )}
