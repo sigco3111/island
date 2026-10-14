@@ -1,0 +1,428 @@
+diff --git a/index.html b/index.html
+index 892c37c..aa3752f 100644
+--- a/index.html
++++ b/index.html
+@@ -1,17 +1,17 @@
+ <!DOCTYPE html>
+-<html lang="en">
++<html lang="ko">
+   <head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+     <!-- HTML Meta Tags -->
+-    <title>Model Island by Huw Roberts</title>
+-    <meta name="description" content="Model Island is an island creator and sculptor made by Huw Roberts" />
++    <title>Model Island 한글판 - Huw Roberts 원작</title>
++    <meta name="description" content="Huw Roberts 원작의 섬 조형 샌드박스 한국어판" />
+ 
+     <!-- Open Graph Meta Tags -->
+     <meta property="og:url" content="http://play.huwroberts.dev/island" />
+     <meta property="og:type" content="website" />
+     <meta property="og:title" content="Model Island" />
+-    <meta property="og:description" content="Model Island is an island creator and sculptor made by Huw Roberts" />
++    <meta property="og:description" content="Huw Roberts 원작의 섬 조형 샌드박스 한국어판" />
+     <meta property="og:image" content="http://play.huwroberts.dev/island/share/play-island.webp" />
+     <meta property="og:image:width" content="1200" />
+     <meta property="og:image:height" content="630" />
+@@ -21,7 +21,7 @@
+     <meta property="twitter:domain" content="play.huwroberts.dev" />
+     <meta property="twitter:url" content="http://play.huwroberts.dev/island" />
+     <meta name="twitter:title" content="Model Island" />
+-    <meta name="twitter:description" content="Model Island is an island creator and sculptor made by Huw Roberts" />
++    <meta name="twitter:description" content="Huw Roberts 원작의 섬 조형 샌드박스 한국어판" />
+     <meta name="twitter:image" content="http://play.huwroberts.dev/island/share/play-island.webp" />
+ 
+     <!-- Favicon -->
+@@ -31,7 +31,8 @@
+     <link rel="apple-touch-icon" sizes="180x180" href="/island/fav/apple-touch-icon.png" />
+     <meta name="apple-mobile-web-app-title" content="Model Island" />
+     <link rel="manifest" href="/island/fav/site.webmanifest" />
+-  </head>
++  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" />
++</head>
+ 
+   <body>
+     <div id="root"></div>
+diff --git a/package.json b/package.json
+index 6b12ded..e0e18d7 100644
+--- a/package.json
++++ b/package.json
+@@ -39,7 +39,8 @@
+     "eslint-plugin-react-hooks": "^5.2.0",
+     "globals": "^16.0.0",
+     "tailwindcss": "^4.1.4",
+-    "vite": "^6.2.4"
++    "vite": "^6.2.4",
++    "vite-plugin-singlefile": "^2.3.3"
+   },
+   "scripts": {
+     "dev": "vite --host",
+diff --git a/src/components/UserInterface.jsx b/src/components/UserInterface.jsx
+index 1593882..1e64083 100644
+--- a/src/components/UserInterface.jsx
++++ b/src/components/UserInterface.jsx
+@@ -17,17 +17,17 @@ import MegaPlaceDecorButton from "./ui/MegaPlaceDecorButton.jsx";
+ 
+ // Tool options for the toolbar
+ const TOOL_OPTIONS = [
+-  { id: "move", icon: Hand, label: "Move", shortcut: ["v"], type: "toggle" },
+-  { id: "sculpt+", icon: Brush, label: "Raise Terrain", shortcut: ["a"], type: "toggle" },
+-  { id: "sculpt-", icon: Eraser, label: "Lower Terrain", shortcut: ["s"], type: "toggle" },
+-  { id: "size", icon: CircleDotDashed, label: "Brush Size", shortcut: ["[", "]"], type: "slider" },
+-  { id: "strength", icon: CircleFadingPlus, label: "Brush Strength", shortcut: ["-", "+"], type: "slider" },
+-  // { id: "decor-select", icon: WandSparkles, label: "Place Items", shortcut: ["p"], type: "decor-select" },
+-  { id: "undo", icon: Undo, label: "Undo", shortcut: ["u"], type: "action" },
+-  { id: "redo", icon: Redo, label: "Redo", shortcut: ["y"], type: "action" },
+-  { id: "download", icon: Download, label: "Download JSON", type: "action" },
+-  { id: "reset", icon: RefreshCw, label: "Reset", shortcut: ["Shift", "r"], type: "action" },
+-  { id: "help", icon: HelpCircle, label: "Help", shortcut: ["h"], type: "action" },
++  { id: "move", icon: Hand, label: "이동", shortcut: ["v"], type: "toggle" },
++  { id: "sculpt+", icon: Brush, label: "지형 높이기", shortcut: ["a"], type: "toggle" },
++  { id: "sculpt-", icon: Eraser, label: "지형 낮추기", shortcut: ["s"], type: "toggle" },
++  { id: "size", icon: CircleDotDashed, label: "브러시 크기", shortcut: ["[", "]"], type: "slider" },
++  { id: "strength", icon: CircleFadingPlus, label: "브러시 강도", shortcut: ["-", "+"], type: "slider" },
++  // { id: "decor-select", icon: WandSparkles, label: "장식 배치", shortcut: ["p"], type: "decor-select" },
++  { id: "undo", icon: Undo, label: "실행 취소", shortcut: ["u"], type: "action" },
++  { id: "redo", icon: Redo, label: "다시 실행", shortcut: ["y"], type: "action" },
++  { id: "download", icon: Download, label: "JSON 내려받기", type: "action" },
++  { id: "reset", icon: RefreshCw, label: "초기화", shortcut: ["Shift", "r"], type: "action" },
++  { id: "help", icon: HelpCircle, label: "도움말", shortcut: ["h"], type: "action" },
+ ];
+ 
+ // All UI components have been moved to their own files in the ui directory
+diff --git a/src/components/ui/CreditsButton.jsx b/src/components/ui/CreditsButton.jsx
+index a609da0..475738a 100644
+--- a/src/components/ui/CreditsButton.jsx
++++ b/src/components/ui/CreditsButton.jsx
+@@ -7,7 +7,7 @@ function CreditsButton({ onShowCredits }) {
+   return (
+     <div className='absolute bottom-[26px] right-12 w-[26px] h-[26px] flex items-center'>
+       <button onClick={onShowCredits} className='btn-dotted text-white'>
+-        Credits
++        제작진
+       </button>
+     </div>
+   );
+diff --git a/src/components/ui/CreditsModal.jsx b/src/components/ui/CreditsModal.jsx
+index 1ebcd09..b392ea3 100644
+--- a/src/components/ui/CreditsModal.jsx
++++ b/src/components/ui/CreditsModal.jsx
+@@ -10,10 +10,10 @@ function CreditsModal({ show, onClose }) {
+   return (
+     <div role='dialog' aria-modal='true' className='fixed inset-0 bg-ocean/50 backdrop-blur-md flex justify-center items-center z-50 prose'>
+       <div className='bg-white rounded-lg shadow max-w-xl w-full p-6'>
+-        <h2 className='text-xl font-semibold mb-4'>Credits</h2>
++        <h2 className='text-xl font-semibold mb-4'>제작진</h2>
+         <div className='mb-4 space-y-2'>
+           <p>
+-            Model Island is work in progress by Huw Roberts. You can find more of my creations at{" "}
++            Model Island는 Huw Roberts가 개발 중인 프로젝트입니다. 다른 작품은{" "}
+             <a href='https://huwroberts.net' target='_blank'>
+               huwroberts.net
+             </a>{" "}
+@@ -24,14 +24,14 @@ function CreditsModal({ show, onClose }) {
+             .
+           </p>
+           <p>
+-            The project is open source and available on{" "}
++            이 프로젝트의 공개 소스는 다음에서 확인할 수 있습니다:{" "}
+             <a href='https://github.com/wuhhh/island  ' target='_blank' rel='noopener noreferrer'>
+               GitHub
+             </a>
+           </p>
+         </div>
+         <div className='mb-4'>
+-          <h3 className='font-medium mb-4'>Models:</h3>
++          <h3 className='font-medium mb-4'>3D 모델 출처</h3>
+           <p>
+             <ul className='list-disc list-inside'>
+               <li>
+@@ -58,7 +58,7 @@ function CreditsModal({ show, onClose }) {
+           </p>
+         </div>
+         <div className='mb-4'>
+-          <h3 className='font-medium mb-4'>Icons:</h3>
++          <h3 className='font-medium mb-4'>아이콘 출처</h3>
+           <p>
+             <a href='https://lucide.dev/' target='_blank'>
+               Lucide Icons
+@@ -69,7 +69,7 @@ function CreditsModal({ show, onClose }) {
+           onClick={onClose}
+           className='cursor-pointer mt-2 px-4 py-2 bg-blue-600 text-white rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-400'
+         >
+-          Close
++          닫기
+         </button>
+       </div>
+     </div>
+diff --git a/src/components/ui/DefaultIslandButton.jsx b/src/components/ui/DefaultIslandButton.jsx
+index c35a7c4..5573bd4 100644
+--- a/src/components/ui/DefaultIslandButton.jsx
++++ b/src/components/ui/DefaultIslandButton.jsx
+@@ -11,7 +11,7 @@ function DefaultIslandButton({ onLoadDefaultIsland }) {
+   return (
+     <div className='absolute top-4 right-4 h-14 group'>
+       <ToolTip position='left' offset={20}>
+-        <span className='text-sm'>Load Starter Island</span>
++        <span className='text-sm'>기본 섬 불러오기</span>
+       </ToolTip>
+       <button onClick={onLoadDefaultIsland} className='group/btn'>
+         <span className='size-14 rounded-full bg-white shadow-md flex items-center justify-center relative'>
+diff --git a/src/components/ui/DeleteButton.jsx b/src/components/ui/DeleteButton.jsx
+index 37050b6..e5231e1 100644
+--- a/src/components/ui/DeleteButton.jsx
++++ b/src/components/ui/DeleteButton.jsx
+@@ -28,11 +28,11 @@ export default function DeleteButton() {
+       exit={{ opacity: 0, y: 8 }}
+       transition={{ type: "spring", stiffness: 500, damping: 20, bounce: 0.5 }}
+     >
+-      <ToolbarButton label='Delete Selected' onClick={handleClick} active={false}>
++      <ToolbarButton label='선택 항목 삭제' onClick={handleClick} active={false}>
+         <Trash2 strokeWidth={1} />
+       </ToolbarButton>
+       <ToolTip position='right' offset={16}>
+-        <KeyBindingItem keyCombination={["Backspace"]} action='Delete' tag='span' flip />
++        <KeyBindingItem keyCombination={["Backspace"]} action='삭제' tag='span' flip />
+       </ToolTip>
+     </motion.div>
+   );
+diff --git a/src/components/ui/HelpModal.jsx b/src/components/ui/HelpModal.jsx
+index 30121c3..56d59f9 100644
+--- a/src/components/ui/HelpModal.jsx
++++ b/src/components/ui/HelpModal.jsx
+@@ -13,35 +13,35 @@ function HelpModal({ show, onClose }) {
+   return (
+     <div role='dialog' aria-modal='true' className='fixed inset-0 bg-ocean/50 backdrop-blur-md flex justify-center items-center z-50'>
+       <div className='bg-white rounded-lg shadow max-w-2xl w-full p-6'>
+-        <h2 className='text-xl font-semibold mb-4'>Tips & Shortcuts</h2>
++        <h2 className='text-xl font-semibold mb-4'>도움말과 단축키</h2>
+         <div className='mb-4'>
+-          <h3 className='font-medium mb-4'>Keyboard Shortcuts:</h3>
++          <h3 className='font-medium mb-4'>키보드 단축키</h3>
+           <ul className='list-outside list-none ml-0 space-y-1'>
+             <li>
+-              <KeyBindingItem keyCombination={["e"]} action='Toggle edit mode' tag='span' />
++              <KeyBindingItem keyCombination={["e"]} action='편집 모드 전환' tag='span' />
+             </li>
+             <li>
+-              <KeyBindingItem keyCombination={["v"]} action='Move tool (Camera control)' tag='span' />
++              <KeyBindingItem keyCombination={["v"]} action='이동 도구 (카메라 조작)' tag='span' />
+             </li>
+             <li className='flex items-center gap-x-3'>
+-              <KeyBindingItem keyCombination={["a", "s"]} action='Raise / Lower terrain mode' separator=' ' tag='span' />
++              <KeyBindingItem keyCombination={["a", "s"]} action='지형 높이기 / 낮추기' separator=' ' tag='span' />
+             </li>
+             <li className='pt-2 pb-3 text-sm'>
+-              <strong className='text-blue-600'>Tip!</strong> In either terrain mode, hold <Kbd>Alt</Kbd> to quickly switch between modes.
++              <strong className='text-blue-600'>팁!</strong> 지형 편집 중 <Kbd>Alt</Kbd>를 누르면 높이기와 낮추기를 빠르게 전환합니다.
+               <br />
+-              Hold <Kbd>Ctrl</Kbd> to access the move tool and adjust the camera.
++              <Kbd>Ctrl</Kbd>를 누른 채 카메라를 조절하세요.
+             </li>
+             <li>
+-              <KeyBindingItem keyCombination={["[", "]"]} action='Make brush size smaller / bigger' separator=' ' tag='span' />
++              <KeyBindingItem keyCombination={["[", "]"]} action='브러시 크기 줄이기 / 늘리기' separator=' ' tag='span' />
+             </li>
+             <li>
+-              <KeyBindingItem keyCombination={["-", "+"]} action='Make brush strength smaller / bigger' separator=' ' tag='span' />
++              <KeyBindingItem keyCombination={["-", "+"]} action='브러시 강도 줄이기 / 늘리기' separator=' ' tag='span' />
+             </li>
+             <li>
+-              <KeyBindingItem keyCombination={["u", "y"]} action='Undo / Redo' tag='span' />
++              <KeyBindingItem keyCombination={["u", "y"]} action='실행 취소 / 다시 실행' tag='span' />
+             </li>
+             <li>
+-              <KeyBindingItem keyCombination={["Shift + R"]} action='Reset' tag='span' />
++              <KeyBindingItem keyCombination={["Shift + R"]} action='초기화' tag='span' />
+             </li>
+           </ul>
+         </div>
+@@ -49,7 +49,7 @@ function HelpModal({ show, onClose }) {
+           onClick={onClose}
+           className='cursor-pointer mt-2 px-4 py-2 bg-blue-600 text-white rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-400'
+         >
+-          Close
++          닫기
+         </button>
+       </div>
+     </div>
+diff --git a/src/components/ui/IntroNotification.jsx b/src/components/ui/IntroNotification.jsx
+index a3cef10..a46126c 100644
+--- a/src/components/ui/IntroNotification.jsx
++++ b/src/components/ui/IntroNotification.jsx
+@@ -18,11 +18,10 @@ function IntroNotification({ show, onDismiss, onCreateNewIsland }) {
+       className='fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-lg p-8 w-11/12 max-w-xl z-50 cursor-default'
+     >
+       <div className='text-left space-y-2 mb-3'>
+-        <p className='font-medium text-base'>🏝️ Model Island - Sculpt and decorate your own paradise 🏝️</p>
++        <p className='font-medium text-base'>🏝️ Model Island - 나만의 섬을 빚고 꾸며보세요 🏝️</p>
+       </div>
+       <p className='text-sm text-gray-700 mb-3'>
+-        Click the pencil button in the top left to try editing this one! If you're feeling brave you can create a new island from scratch by
+-        clicking the button below!
++        왼쪽 위 연필 버튼을 눌러 섬을 편집해보세요! 아래 버튼으로 빈 섬부터 새로 만들 수도 있습니다.
+       </p>
+       <div className='flex justify-between items-center'>
+         <button onClick={onCreateNewIsland} className='btn'>
+diff --git a/src/components/ui/MegaPlaceDecorButton.jsx b/src/components/ui/MegaPlaceDecorButton.jsx
+index 1994609..c267921 100644
+--- a/src/components/ui/MegaPlaceDecorButton.jsx
++++ b/src/components/ui/MegaPlaceDecorButton.jsx
+@@ -57,7 +57,7 @@ export default function MegaPlaceDecorButton() {
+     <div ref={ref} className='relative'>
+       <div className='group h-[69px] absolute bottom-[19px] left-1/2 -translate-x-1/2'>
+         {/* <div className=''> */}
+-        <button onClick={handleClick} className='transition-transform hover:scale-105 duration-200' aria-label='Place decorative items'>
++        <button onClick={handleClick} className='transition-transform hover:scale-105 duration-200' aria-label='장식 배치'>
+           <span className='relative block size-[69px]'>
+             <span className='absolute top-0 left-1/2 -translate-x-3 -translate-y-2 size-6 bg-white rounded-full' />
+             <span
+@@ -93,7 +93,7 @@ export default function MegaPlaceDecorButton() {
+         {/* </div> */}
+         {!decorSelect && (
+           <ToolTip position='top' offset={20}>
+-            <KeyBindingItem keyCombination={["p"]} action='Place Items' tag='span' flip />
++            <KeyBindingItem keyCombination={["p"]} action='장식 배치' tag='span' flip />
+           </ToolTip>
+         )}
+       </div>
+diff --git a/src/components/ui/ToolbarToggle.jsx b/src/components/ui/ToolbarToggle.jsx
+index 7cbcc36..bc2387a 100644
+--- a/src/components/ui/ToolbarToggle.jsx
++++ b/src/components/ui/ToolbarToggle.jsx
+@@ -14,7 +14,7 @@ import ToolTip from "./ToolTip";
+ const ToolbarToggle = ({ editMode, toggleEditMode }) => (
+   <button
+     onClick={toggleEditMode}
+-    aria-label='Toggle edit mode'
++    aria-label='편집 모드 전환'
+     className='relative cursor-pointer w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-400'
+   >
+     <AnimatePresence mode='wait'>
+@@ -30,7 +30,7 @@ const ToolbarToggle = ({ editMode, toggleEditMode }) => (
+             <X strokeWidth={1} />
+           </motion.div>
+           <ToolTip>
+-            <KeyBindingItem keyCombination={["e"]} action='Exit Edit Mode' tag='span' flip />
++            <KeyBindingItem keyCombination={["e"]} action='편집 모드 종료' tag='span' flip />
+           </ToolTip>
+         </div>
+       ) : (
+@@ -45,7 +45,7 @@ const ToolbarToggle = ({ editMode, toggleEditMode }) => (
+             <Pencil strokeWidth={1} />
+           </motion.div>
+           <ToolTip>
+-            <KeyBindingItem keyCombination={["e"]} action='Edit Mode' tag='span' flip />
++            <KeyBindingItem keyCombination={["e"]} action='편집 모드' tag='span' flip />
+           </ToolTip>
+         </div>
+       )}
+diff --git a/src/hooks/useDecorRegistry.jsx b/src/hooks/useDecorRegistry.jsx
+index ec0ece6..0d5c0d0 100644
+--- a/src/hooks/useDecorRegistry.jsx
++++ b/src/hooks/useDecorRegistry.jsx
+@@ -151,7 +151,7 @@ const DECOR_ITEMS = [
+   {
+     key: "cloud",
+     nodeName: "cloud",
+-    label: "Cloud",
++    label: "구름",
+     icon: "icon--decor-cloud.jpg",
+     placementProps: {
+       mustIntersect: false,
+@@ -166,7 +166,7 @@ const DECOR_ITEMS = [
+   {
+     key: "dock",
+     nodeName: "dock",
+-    label: "Dock",
++    label: "부두",
+     icon: "icon--decor-dock.jpg",
+     placementProps: {
+       yCompensation: -0.01,
+@@ -176,7 +176,7 @@ const DECOR_ITEMS = [
+   {
+     key: "house",
+     nodeName: "house",
+-    label: "House",
++    label: "집",
+     icon: "icon--decor-house1.jpg",
+     placementProps: {
+       yCompensation: -0.02,
+@@ -187,7 +187,7 @@ const DECOR_ITEMS = [
+   {
+     key: "lighthouse",
+     nodeName: "lighthouse",
+-    label: "Lighthouse",
++    label: "등대",
+     icon: "icon--decor-lighthouse.jpg",
+     placementProps: {
+       yCompensation: -0.03,
+@@ -197,7 +197,7 @@ const DECOR_ITEMS = [
+   {
+     key: "tent",
+     nodeName: "tent",
+-    label: "Tent",
++    label: "텐트",
+     icon: "icon--decor-tent.jpg",
+     placementProps: {
+       yCompensation: -0.01,
+@@ -208,7 +208,7 @@ const DECOR_ITEMS = [
+   {
+     key: "tree",
+     nodeName: "tree",
+-    label: "Tree",
++    label: "나무",
+     icon: "icon--decor-tree1.jpg",
+     placementProps: {
+       yCompensation: -0.02,
+@@ -219,7 +219,7 @@ const DECOR_ITEMS = [
+   {
+     key: "windTurbine",
+     nodeName: "windTurbine",
+-    label: "Turbine",
++    label: "풍력 터빈",
+     icon: "icon--decor-wind-turbine.jpg",
+     placementProps: {
+       yCompensation: -0.01,
+diff --git a/src/styles.css b/src/styles.css
+index c118712..7df55a0 100644
+--- a/src/styles.css
++++ b/src/styles.css
+@@ -37,7 +37,7 @@ body {
+   position: fixed;
+   overflow: hidden;
+   overscroll-behavior-y: none;
+-  font-family: helvetica neue, helvetica, arial, sans-serif;
++  font-family: "Noto Sans KR", "Malgun Gothic", helvetica, arial, sans-serif;
+   color: black;
+   -webkit-font-smoothing: antialiased;
+ }
+diff --git a/src/systems/DecorSystem.jsx b/src/systems/DecorSystem.jsx
+index 4f847aa..f184686 100644
+--- a/src/systems/DecorSystem.jsx
++++ b/src/systems/DecorSystem.jsx
+@@ -51,7 +51,7 @@ export default function DecorSystem() {
+     if (!islandStoreHydrated) return;
+ 
+     const handleKeyDown = e => {
+-      if ((e.code === "Backspace" || e.code === "Delete") && selectedItems.length > 0) {
++      if ((e.code === "Backspace" || e.code === "삭제") && selectedItems.length > 0) {
+         setPlacedItems(placedItems.filter(item => !selectedItems.includes(item.id)));
+         setSelectedItems([]);
+       }
+diff --git a/vite.config.js b/vite.config.js
+index fb153ad..549f3d8 100644
+--- a/vite.config.js
++++ b/vite.config.js
+@@ -1,3 +1,4 @@
++import { viteSingleFile } from 'vite-plugin-singlefile';
+ import { resolve } from "path";
+ 
+ import tailwindcss from "@tailwindcss/vite";
+@@ -19,5 +20,5 @@ export default defineConfig({
+       "@src": resolve(__dirname, "./src"),
+     },
+   },
+-  plugins: [react(), tailwindcss()],
++  plugins: [react(), tailwindcss(), viteSingleFile()],
+ });
