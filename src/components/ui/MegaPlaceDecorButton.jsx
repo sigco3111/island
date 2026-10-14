@@ -57,7 +57,7 @@ export default function MegaPlaceDecorButton() {
     <div ref={ref} className='relative'>
       <div className='group h-[69px] absolute bottom-[19px] left-1/2 -translate-x-1/2'>
         {/* <div className=''> */}
-        <button onClick={handleClick} className='transition-transform hover:scale-105 duration-200' aria-label='Place decorative items'>
+        <button onClick={handleClick} className='transition-transform hover:scale-105 duration-200' aria-label='장식 배치'>
           <span className='relative block size-[69px]'>
             <span className='absolute top-0 left-1/2 -translate-x-3 -translate-y-2 size-6 bg-white rounded-full' />
             <span
@@ -93,7 +93,7 @@ export default function MegaPlaceDecorButton() {
         {/* </div> */}
         {!decorSelect && (
           <ToolTip position='top' offset={20}>
-            <KeyBindingItem keyCombination={["p"]} action='Place Items' tag='span' flip />
+            <KeyBindingItem keyCombination={["p"]} action='장식 배치' tag='span' flip />
           </ToolTip>
         )}
       </div>
